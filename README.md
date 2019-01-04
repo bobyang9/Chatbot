@@ -9,5 +9,5 @@ Features:
   - Emoticon buttons for quick addition to chat
   - Decision tree (top-down AI) to respond to likely messages
   - Aesthetic CSS styling
-
-![Image of chat with chatbot](https://github.com/bobyang9/Chatbot/blob/master/chat.png)
+  
+  <img src = "https://github.com/bobyang9/Chatbot/blob/master/chat.png" alt = "Image of chat with chatbot" width = 500px>
