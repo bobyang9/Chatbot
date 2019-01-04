@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2019 by bobyang9 (http://jsbin.com/xeqetoh/6/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html lang = "en">
+    
+    <head>
+        <meta name="description" content="chatbot">
+        <meta charset = "UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Chatbot by Robert Yang</title>
+    <style id="jsbin-css">
+.flex{
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    height: 500px;
+}
+
+.flex2{
+    display: flex;
+}
+
+.flex3
+{
+    display: flex;
+    flex-direction: row;
+}
+
+#area{
+    flex: 1;
+}
+
+body{
+    font-family: Helvetica Neue;
+    font-weight: 300;
+}
+
+#chatlog{
+    background: rgb(145, 214, 245);
+    text-align: right;
+    padding: 20px;
+    line-height: 1;
+    width: 
+}
+
+paragraph{
+    background: rgb(245, 245, 245);
+    margin-bottom: 20px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+AIresponse{
+    background: rgb(245, 245, 200);
+    margin-bottom: 20px;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: left;
+}
+
+h1{
+    font-weight: 200;
+    text-align: center;
+}
+
+.emoji{
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+</style>
+</head>
+    
+    <body>
+        <h1> Chat </h1>
+        <section class = "flex" id = "chatlog">
+            
+        </section>
+        <section class = "flex2">
+            <textarea placeholder = "Enter text here!" rows = 4 id = "area"> </textarea>
+        </section>
+        <section class = "flex3">
+            <button class = "emoji" id = "smile-emoji" onclick = "addEmoticon(this.id)">😀</button>
+            <button class = "emoji" id = "funny-emoji" onclick = "addEmoticon(this.id)">🤣</button>
+            <button class = "emoji" id = "smirking-emoji" onclick = "addEmoticon(this.id)">😏</button>
+            <button class = "emoji" id = "sleeping-emoji" onclick = "addEmoticon(this.id)">😴</button>
+            <button class = "emoji" id = "tongue-emoji" onclick = "addEmoticon(this.id)">😛</button>
+            <button class = "emoji" id = "nose-emoji" onclick = "addEmoticon(this.id)">😤</button>
+        </section>
+    <script id="jsbin-javascript">
+var area = document.getElementById("area");
+var areavalue = "";
+
+area.addEventListener("keypress", function(e)
+{
+    if(e.which == 13)
+    {
+        areavalue = area.value.trim();
+        console.log(area.value.trim());
+        var p = document.createElement("paragraph");  
+        var t = document.createTextNode(area.value.trim());
+        p.appendChild(t); 
+        document.getElementById("chatlog").appendChild(p);
+        clearContents(area);
+        replyAI();
+        updateScrollPosition();
+    }
+});
+
+function clearContents(element) {
+    element.value = '';
+}
+
+function replyAI()
+{
+    console.log("responding");
+    var p = document.createElement("AIresponse");  
+    var t = document.createTextNode(generateAIReply(areavalue));
+    p.appendChild(t);
+    document.getElementById("chatlog").appendChild(p);
+}
+
+function generateAIReply(input)
+{
+    input = input.toLowerCase();
+    
+    if(input.includes("today's date"))
+    {
+        var today = new Date();
+        console.log("today's string" + today.toString());
+        return "Today's date is: " + today.toString();
+    }
+    else if(input.includes("what's your favorite"))
+    {
+        if(input.includes("food"))
+        {
+            return "Electricity -- tastes just like burnt cheese. How about you?";
+        }
+        else if(input.includes("color"))
+        {
+            return "Light yellow (#e5e5d4) -- that's the color of my chat bubbles!"
+        }
+        else if(input.includes("city"))
+        {
+            return "San Jose -- where I was born!"
+        }
+        else if(input.includes("activity"))
+        {
+            return "Coding. Every time I reply to you, I add a new HTML tag to this webpage."
+        }
+        else{
+            return "You";
+        }
+    }
+    else if(input.includes("good"))
+    {
+        return "That's great!";
+    }
+    else if(input.includes("hello") || input.includes("hi") || input.includes("hey"))
+    {
+        var rand = Math.floor((Math.random() * 4) + 1);
+        if(rand == 1)
+        {
+            return "Hey!";
+        }
+        else if(rand == 2)
+        {
+            return "Howdy!";
+        }
+        else if(rand == 3)
+        {
+            var p = document.createElement("AIresponse");  
+            var t = document.createTextNode("Hey!");
+            p.appendChild(t);
+            document.getElementById("chatlog").appendChild(p);
+            return "How are you today?";
+        }
+        else
+        {
+            return "Yo!";
+        }
+    }
+    else if(input.includes("bye"))
+    {
+        return "See ya!";
+    }
+    else
+    {
+        return "Haha";
+    }
+}
+
+function addEmoticon(id)
+{
+    document.getElementById("area").value = document.getElementById("area").value + document.getElementById(id).innerHTML;
+}
+
+function updateScrollPosition(){
+    var e = document.getElementById("chatlog");
+e.scrollTop = e.scrollHeight;
+}
+
+
+
+
+
+
+
+</script>
+</body>
+  
+</html>
