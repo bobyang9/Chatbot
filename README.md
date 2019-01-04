@@ -10,4 +10,4 @@ Features:
   - Decision tree (top-down AI) to respond to likely messages
   - Aesthetic CSS styling
 
-![Image of chat with chatbot][https://github.com/bobyang9/Chatbot/blob/master/chat.png]
+![Image of chat with chatbot](https://github.com/bobyang9/Chatbot/blob/master/chat.png)
