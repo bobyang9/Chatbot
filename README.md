@@ -19,3 +19,5 @@ Version 2 Features:
   - Fixed bug through change in parsing implementation
     - removed all uses of method includes() to prevent "this" from being interpreted as "hi"
     - Parse input by words (removed punctuation) and "understand" input by checking them against dictionary
+
+  <img src = "https://github.com/bobyang9/Chatbot/blob/master/chat2.png" alt = "Another image of chat with chatbot" width = 500px>
